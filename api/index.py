@@ -2,6 +2,7 @@ from html.parser import HTMLParser
 from http.server import BaseHTTPRequestHandler
 from urllib import parse
 import json
+from nlpResponse import predict
 
 
 def getdata():
@@ -46,6 +47,7 @@ class handler(BaseHTTPRequestHandler):
         self.send_header('Content-type', 'text/plain')
         self.end_headers()
         tag = getdata()
+        print(predict("Turn off the light"))
         print(tag)
         if "name" in dic:
             message = "Hello, " + dic["name"] + "!" + tag
@@ -53,4 +55,6 @@ class handler(BaseHTTPRequestHandler):
             message = "Hello, stranger!" + tag
         self.wfile.write(message.encode())
         self.wfile.write(json.dumps(value).encode())
+        self.wfile.write(json.dumps(
+            {"prediction": predict("Turn off the light")}).encode())
         return
