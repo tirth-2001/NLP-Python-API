@@ -37,9 +37,6 @@ value = {
     "price": price
 }
 
-# Dictionary to JSON Object using dumps() method
-# Return JSON Object
-
 
 class handler(BaseHTTPRequestHandler):
     def do_GET(self):
