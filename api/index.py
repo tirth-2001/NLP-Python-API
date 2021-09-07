@@ -55,4 +55,5 @@ class handler(BaseHTTPRequestHandler):
         else:
             message = "Hello, stranger!" + tag
         self.wfile.write(message.encode())
-        return json.dumps(value)
+        self.wfile.write(json.dumps(value).encode())
+        return
