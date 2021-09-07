@@ -1,6 +1,7 @@
 from html.parser import HTMLParser
 from http.server import BaseHTTPRequestHandler
 from urllib import parse
+import json
 
 
 def getdata():
@@ -23,6 +24,22 @@ def getdata():
 if __name__ == "__main__":
     print(getdata())
 
+language = "Python"
+company = "GeeksForGeeks"
+Itemid = 1
+price = 0.00
+
+# Create Dictionary
+value = {
+    "language": language,
+    "company": company,
+    "Itemid": Itemid,
+    "price": price
+}
+
+# Dictionary to JSON Object using dumps() method
+# Return JSON Object
+
 
 class handler(BaseHTTPRequestHandler):
     def do_GET(self):
@@ -38,4 +55,4 @@ class handler(BaseHTTPRequestHandler):
         else:
             message = "Hello, stranger!" + tag
         self.wfile.write(message.encode())
-        return
+        return json.dumps(value)
