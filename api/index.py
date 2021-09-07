@@ -34,8 +34,8 @@ class handler(BaseHTTPRequestHandler):
         tag = getdata()
         print(tag)
         if "name" in dic:
-            message = "Hello, " + dic["name"] + "!"
+            message = "Hello, " + dic["name"] + "!" + tag
         else:
-            message = "Hello, stranger!"
-        self.wfile.write(message.encode(), tag.encode())
+            message = "Hello, stranger!" + tag
+        self.wfile.write(message.encode())
         return
